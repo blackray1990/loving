@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath*:conf/ApplicationContext.xml</param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<!-- RequestContextListener For 服务层日志记录器取上下文用 暂时无用
+	<listener>
+	    <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+	</listener>-->
+	<!-- google验证码配置 -->
+	<servlet>  
+	    <servlet-name>Kaptcha</servlet-name>  
+	    <servlet-class>com.google.code.kaptcha.servlet.KaptchaServlet</servlet-class>  
+	</servlet>  
+	<servlet-mapping>  
+	    <servlet-name>Kaptcha</servlet-name>  
+	    <url-pattern>/kaptcha.jpg</url-pattern> 
+	</servlet-mapping>
+	<!-- CXF配置 -->
+<!--  	<servlet>  
+        <servlet-name>CXFServlet</servlet-name>  
+        <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>  
+        <load-on-startup>1</load-on-startup>  
+    </servlet>
+  
+    <servlet-mapping>  
+        <servlet-name>CXFServlet</servlet-name>  
+        <url-pattern>/remote/*</url-pattern>  
+    </servlet-mapping>   -->
+	<!-- SpringMVC配置 -->
+	<servlet>
+		<servlet-name>review</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!-- 将请求拦截到review-mvc中  如果不配置此初始化参数，<servelt-name>-servlet(review-servlet) -->
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath*:conf/review-mvc.xml</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>review</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+	    <servlet-name>dwr-invoker</servlet-name>
+	    <servlet-class>org.directwebremoting.servlet.DwrServlet</servlet-class>
+	    <init-param>
+	        <param-name>debug</param-name>
+	        <param-value>true</param-value>
+	    </init-param>
+	    <!-- dwr的comet控制 -->
+	    <init-param>
+	      <param-name>pollAndCometEnabled</param-name>
+	      <param-value>true</param-value>
+	    </init-param>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>dwr-invoker</servlet-name>
+	    <url-pattern>/dwr/*</url-pattern>
+	</servlet-mapping>
+	
+	<!-- session过期时间30分钟 -->
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+	<welcome-file-list>
+		<welcome-file>views/default.jsp</welcome-file>
+	</welcome-file-list>
+
+</web-app>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hjs.study.spring.dao.IUserDao"><!-- 指定接口类路径 -->
+
+<resultMap id="userlist" type="com.hjs.study.spring.bean.User">
+	<result column="id" property="id"/>
+	<result column="role" property="role"/>
+	<result column="name" property="name"/>
+	<result column="username" property="username"/>
+	<result column="isenable" property="isEnable"/>
+	<result column="description" property="desc"/>
+</resultMap>
+
+<select id="getUserForLogin" parameterType="com.hjs.study.spring.bean.User" resultType="com.hjs.study.spring.bean.User">
+	SELECT
+		t.id,t.name,t.role,t.username,t.desc
+	FROM sys_user t
+	WHERE t.isenable=1 and t.username=#{username} AND t.password=#{password}
+</select>
+
+<select id="getAllUsers" resultMap="userlist">
+	SELECT * FROM sys_user
+</select>
+
+<select id="updateUser" parameterType="com.hjs.study.spring.bean.User">
+	update sys_user set 
+	id=#{id}
+	<if test="desc!=null">
+		,desc=#{desc}
+	</if>
+	<if test="role!=null">
+		,role=#{role}
+	</if>
+	<if test="name!=null">
+		,name=#{name}
+	</if>
+	<if test="password!=null">
+		,password=#{password}
+	</if>
+	where id=#{id}
+</select>
+
+<select id="insertUser" parameterType="com.hjs.study.spring.bean.User">
+	Insert into sys_user set username=#{username},role=#{role},password=#{password}
+	<if test="name!=null">
+		,name=#{name}
+	</if>
+	<if test="desc != null">
+	,description = #{desc}
+	</if>
+</select>
+
+<select id="deleteUser" parameterType="com.hjs.study.spring.bean.User">
+	delete from sys_user where id=#{id}
+</select>
+</mapper>

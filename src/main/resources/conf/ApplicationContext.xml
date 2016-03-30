@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+	xmlns="http://www.springframework.org/schema/beans"
+ 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ 	xmlns:context="http://www.springframework.org/schema/context"
+ 	xmlns:aop="http://www.springframework.org/schema/aop"
+ 	xmlns:jaxws="http://cxf.apache.org/jaxws"
+ 	xmlns:cxf="http://cxf.apache.org/core"
+ 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                    http://www.springframework.org/schema/context
+                    http://www.springframework.org/schema/context/spring-context-2.5.xsd
+                    http://www.springframework.org/schema/tx
+                    http://www.springframework.org/schema/tx/spring-tx.xsd 
+                    http://www.springframework.org/schema/aop
+                    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+                    http://cxf.apache.org/jaxws   
+    				http://cxf.apache.org/schemas/jaxws.xsd
+                    ">
+    
+    <!-- 支持注解 -->
+    <context:annotation-config />
+    <!-- 打开aop 支持注解 -->
+    <aop:aspectj-autoproxy/> 
+    <!-- 扫描切面并注入 使用注解方式配置切面 -->
+	<context:component-scan base-package="com.hjs.study.spring.aspect,com.hjs.study.spring.chat"/>
+       
+    <import resource="classpath:conf/spring-redis.xml"/>
+    <import resource="classpath:conf/spring-jdbc.xml"/>
+	
+	
+	 <!-- spring与mybatis整合配置，扫描所有带注解的类的(dao)包 --> 
+	 <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+	 	<property name="basePackage" value="com.hjs.study.spring.dao,com.hjs.study.spring.ext.dao"></property>
+	 </bean>
+
+    
+    <!-- cxf配置 暂时注释 -->
+	<!--     <import resource="classpath:META-INF/cxf/cxf.xml" />  
+    <import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />  
+    <import resource="classpath:META-INF/cxf/cxf-servlet.xml" />  
+    <bean id="hello" class="com.blackray.webservice.service.HelloWorldServiceImpl"/>实现类
+    address就是访问的地址 /HelloWorld?wsdl
+    <jaxws:endpoint id="helloWorld" implementor="#hello" address="/HelloWorld" />   --> 
+</beans>
