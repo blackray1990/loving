@@ -21,7 +21,14 @@
     	<mvc:interceptor>
  			<mvc:mapping path="/*"/>
  			<mvc:mapping path="/*/*"/>
- 			<bean class="com.hjs.study.spring.aspect.ControllerInterceptorAdapter" ></bean> 
+ 			<bean class="com.hjs.study.spring.aspect.ControllerInterceptorAdapter" >
+ 				<property name="ignoreList">
+ 					<list>
+ 						<value>/login</value>
+ 						<value>/logonsys</value>
+ 					</list>
+ 				</property>
+ 			</bean> 
     	</mvc:interceptor>
     </mvc:interceptors>
     

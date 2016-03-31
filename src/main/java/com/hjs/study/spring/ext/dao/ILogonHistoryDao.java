@@ -2,6 +2,7 @@ package com.hjs.study.spring.ext.dao;
 
 import java.util.List;
 
+import com.hjs.study.spring.bean.Page;
 import com.hjs.study.spring.ext.model.LogonHistory;
 
 public interface ILogonHistoryDao {
@@ -11,5 +12,5 @@ public interface ILogonHistoryDao {
 	 * @param contition
 	 * @return 
 	 */
-	public List<LogonHistory> selectLogonHistory(LogonHistory contition);
+	public List<LogonHistory> selectLogonHistory(Page<LogonHistory> page);
 }

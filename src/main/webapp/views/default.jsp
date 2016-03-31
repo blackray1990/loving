@@ -60,7 +60,7 @@
                         		</div>
                             </div>
                             <div class="form-bottom">
-			                    <form role="form" action="logonsys.do" method="post" class="login-form">
+			                    <form role="form" action="logonsys" method="post" class="login-form">
 			                    	<div class="form-group">
 			                    		<label class="sr-only" for="form-username">Username</label>
 			                        	<input type="text" name="username" placeholder="Username..." class="form-username form-control" id="form-username">

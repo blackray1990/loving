@@ -30,6 +30,5 @@
 		      </ul>
 		   </div>
 	</nav>
-    <jsp:include page="left.jsp"></jsp:include>
 </body> 
 </html>

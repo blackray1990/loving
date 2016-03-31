@@ -17,12 +17,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 public class ControllerInterceptorAdapter extends HandlerInterceptorAdapter{
 	
-	private static List<String> excludeMapping = new ArrayList<String>();
-	
-	//不需要拦截的路径(spring3.0不支持exclude-mapping)
-	static{
-		excludeMapping.add("/logonsys.do");
-	}
+	private List<String> ignoreList = new ArrayList<String>();
 	
 	/**
 	 * 进入controller前拦截
@@ -36,7 +31,7 @@ public class ControllerInterceptorAdapter extends HandlerInterceptorAdapter{
 		request.setAttribute(Constants.JSESSIONID, sessionId);	//传递到controller中
 		
 		String servletName = request.getServletPath();
-		if(excludeMapping.contains(servletName)){	//不过滤List中的路径
+		if(ignoreList.contains(servletName)){	//不过滤List中的路径
 			return true;
 		}
 		
@@ -45,7 +40,7 @@ public class ControllerInterceptorAdapter extends HandlerInterceptorAdapter{
 			request.setAttribute(Constants.CHECK_RESULT, Constants.RESULT_MSG);
 			return true;
 		}else{
-			response.sendRedirect("localhost:8080/myspring/default.jsp");	//重定向到登录页面
+			response.sendRedirect("login");	//重定向到登录页面
 			return false;
 		}
 	}
@@ -67,5 +62,16 @@ public class ControllerInterceptorAdapter extends HandlerInterceptorAdapter{
 		}
 		return jSessionId;
 	}
+
+	public List<String> getIgnoreList() {
+		return ignoreList;
+	}
+
+	public void setIgnoreList(List<String> ignoreList) {
+		this.ignoreList = ignoreList;
+	}
+	
+	
+	
 	
 }

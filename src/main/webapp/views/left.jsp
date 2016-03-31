@@ -7,22 +7,35 @@
 
 <body>
 	<!-- 左侧菜单 -->
-	<div class="panel panel-default" style="margin:3% 0 0 3%;width:180px;padding:3px">
-	<div class="panel-group" id="accordion">
+	<div class="panel panel-default" style="width:200px;padding:5px">
+	<div class="panel-group" id="accordion" style="margin-bottom: 0">
 	  	<c:forEach items="${menus }" var="item" varStatus="status">
-	  		<div class="panel panel-default folder">
-			    <div class="panel-heading">
+	  	
+	  		<c:if test="${item.location == 1}">
+	  			<div class="panel panel-info folder ">
+	  		</c:if>
+	  		<c:if test="${item.location !=1}">
+	  			<div class="panel panel-default folder ">
+	  		</c:if>
+			    <div class="panel-heading" style="text-align: center">
 			      <h4 class="panel-title">
-			        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-${status.index }">
-			          	${item.text }
-			        </a>
+			      	<c:if test="${item.isFolder==1 }">
+			      		<a data-toggle="collapse" data-parent="#accordion" href="#collapse-${status.index }">
+				          	${item.text }
+				        </a>
+			      	</c:if>
+			        <c:if test="${item.isFolder==0 }">
+			      		<a href="${item.url }">
+				          	${item.text }
+				        </a>
+			      	</c:if>
 			      </h4>
 			    </div>
 			    
 			    <div id="collapse-${status.index }" class="panel-collapse collapse">
 				    <c:forEach items="${item.children }" var="submenu">
 				      <div class="panel-body">
-				        ${submenu.text }
+				        <a href="${submenu.url }">${submenu.text }</a>
 				      </div>
 				    </c:forEach>
 			    </div>
