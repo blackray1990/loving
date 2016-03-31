@@ -1,5 +1,7 @@
 package com.hjs.study.spring.service;
 
+import java.util.List;
+
 import com.hjs.study.spring.bean.Menu;
 
 
@@ -10,6 +12,10 @@ public interface IMenuService {
 	 * 查询菜单
 	 */
 	public String getAllMenus();
+	/**
+	 * 查询菜单
+	 */
+	public List<Menu> getAllMenuList();
 	/**
 	 * 新增菜单
 	 * @return

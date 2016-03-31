@@ -12,10 +12,12 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.hjs.study.spring.bean.Menu;
 import com.hjs.study.spring.bean.User;
 import com.hjs.study.spring.ext.dao.ILogonHistoryDao;
 import com.hjs.study.spring.ext.model.LogonHistory;
 import com.hjs.study.spring.service.ILoginService;
+import com.hjs.study.spring.service.IMenuService;
 import com.hjs.study.spring.util.Constants;
 import com.hjs.study.spring.util.MD5Util;
 
@@ -31,6 +33,9 @@ public class LoginController extends BaseController{
 	private ILoginService loginService;
 	@Resource
 	private ILogonHistoryDao logonHistoryDao;
+	
+	@Resource
+	private IMenuService menuService;
 	
 	/**
 	 * 登陆验证
@@ -69,9 +74,10 @@ public class LoginController extends BaseController{
 	}
 
 	@RequestMapping(value="index")
-	public String index(){
-		
-		return "login/logon";
+	public String index(Model model){
+		List<Menu> menus = menuService.getAllMenuList();
+		model.addAttribute("menus",menus);
+		return "login/index";
 	}
 	
 	/**

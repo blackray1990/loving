@@ -37,4 +37,10 @@ public class MenuServiceImpl implements IMenuService{
 	public void removeMenu(Menu menu) {
 		menuDao.deleteMenu(menu);
 	}
+
+	@Override
+	public List<Menu> getAllMenuList() {
+		List<Menu> menuList = menuDao.queryMainMenus();
+		return menuList;
+	}
 }
