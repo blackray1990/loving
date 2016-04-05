@@ -99,10 +99,13 @@ public class LoginController extends BaseController{
 	 * 读取登录历史
 	 */
 	@RequestMapping(value="gethistory")
-	public String getLogonHistory(Page<LogonHistory> page,Model model){
-		page.setStartIndex(page.getCurrentPage()*page.getPageSize());
+	public String getLogonHistory(LogonHistory param,Page<LogonHistory> page,Model model){
+		page.setStartIndex(page.getCurrentPage()*page.getPageSize()-1);
+		int entityCount = logonHistoryDao.selectLogonHistoryCount(param);
 		List<LogonHistory> entityList = logonHistoryDao.selectLogonHistory(page);
+		page.setTotalCount(entityCount);
 		page.setItems(entityList);
+		
 		model.addAttribute("page",page);
 		List<Menu> menus = menuService.getAllMenuList();
 		model.addAttribute("menus",menus);

@@ -4,7 +4,7 @@
 
 <mapper namespace="com.hjs.study.spring.ext.dao.ILogonHistoryDao"><!-- 指定接口类路径 -->
 
-	<select id="selectLogonHistoryCount" parameterType="com.hjs.study.spring.bean.Page" resultType="int">
+	<select id="selectLogonHistoryCount" parameterType="com.hjs.study.spring.ext.model.LogonHistory" resultType="int">
 		select count(*) from logon_history t
 	</select>
 	<select id="selectLogonHistory" parameterType="com.hjs.study.spring.bean.Page" resultType="com.hjs.study.spring.ext.model.LogonHistory">

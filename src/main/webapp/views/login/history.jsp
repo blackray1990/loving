@@ -81,9 +81,9 @@
 	       <tbody>
 			<c:forEach items="${page.items }" var="item" >
 				<tr>
-					<td>${item.loginName}</td>
-					<td>${item.lastLoginTime}</td>
-					<td>${item.ipAdd}</td>
+					<td width="15%">${item.loginName}</td>
+					<td width="20%">${item.lastLoginTime}</td>
+					<td width="15%">${item.ipAdd}</td>
 					<td>${item.remark}</td>
 			  	</tr>
 		  	</c:forEach>
@@ -91,11 +91,27 @@
 		 </table>
       </div>
       <ul class="pagination" style="float:right">
-		  <li><a href="#">&laquo;</a></li>
-		  <li class="active"><a href="#">1</a></li>
-		  <li><a href="#">2</a></li>
-		  <li><a href="#">&raquo;</a></li>
-		</ul>
+		 <li><a href="#" data-current='${page.currentPage-1 }'>&laquo;</a></li>
+		 <c:forEach var="i" begin="1" end="${page.totalPage }">
+		 	<c:if test="${page.currentPage==i }">
+		 		<li class="active"><a href="#" data-current='${i }'>${i }</a></li>
+		 	</c:if>
+		 	<c:if test="${page.currentPage!=i }">
+		 		<li><a href="#" data-current='${i }'>${i }</a></li>
+		 	</c:if>
+		 </c:forEach>
+		 <li><a href="#" data-current='${page.currentPage+1 }'>&raquo;</a></li>
+		 
+		 <script>
+		 	$(document).ready(function(){
+		 		$(".pagination li").click(function(){
+		 			var currentPageEle = "<input type='hidden' name='currentPage' value='"+$(this).children('a').data('current')+"' />";
+		 			$(".search_form").append(currentPageEle);
+		 			$(".search_form").submit();
+		 		});
+		 	});
+		 </script>
+	  </ul>
     </div>
      <!-- 右 -->
      <div class="col-lg-2 col-sm-2" align="center"></div>
