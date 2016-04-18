@@ -10,7 +10,7 @@ public class Page<T> {
 	
 	private int currentPage=1;
 	
-	private int pageSize=1;	//每页条数
+	private int pageSize=10;	//每页条数
 	
 	private int totalCount;	//总条数
 	

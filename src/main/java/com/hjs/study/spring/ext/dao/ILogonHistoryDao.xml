@@ -10,4 +10,8 @@
 	<select id="selectLogonHistory" parameterType="com.hjs.study.spring.bean.Page" resultType="com.hjs.study.spring.ext.model.LogonHistory">
 		select t.* from logon_history t limit #{startIndex},#{pageSize}
 	</select>
+	
+	<insert id="insertHistory" parameterType="com.hjs.study.spring.ext.model.LogonHistory">
+		insert logon_history (loginname,lastlogintime,ipadd,remark) values (#{loginName},#{lastLoginTime},#{ipAdd},#{remark})
+	</insert>
 </mapper>

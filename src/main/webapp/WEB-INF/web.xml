@@ -17,14 +17,14 @@
 	    <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
 	</listener>-->
 	<!-- google验证码配置 -->
-	<servlet>  
+	<!--<servlet>
 	    <servlet-name>Kaptcha</servlet-name>  
 	    <servlet-class>com.google.code.kaptcha.servlet.KaptchaServlet</servlet-class>  
 	</servlet>  
 	<servlet-mapping>  
 	    <servlet-name>Kaptcha</servlet-name>  
 	    <url-pattern>/kaptcha.jpg</url-pattern> 
-	</servlet-mapping>
+	</servlet-mapping>-->
 	<!-- CXF配置 -->
 <!--  	<servlet>  
         <servlet-name>CXFServlet</servlet-name>  

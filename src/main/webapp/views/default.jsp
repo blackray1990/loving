@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -54,6 +55,9 @@
                         		<div class="form-top-left">
                         			<h3>登入到系统</h3>
                             		<p>输入用户名和密码进行登陆</p>
+                            		<c:if test="${errordtl!=null }">
+                            			<p class="alert alert-danger">${errordtl }</p>
+                            		</c:if>
                         		</div>
                         		<div class="form-top-right">
                         			<i class="fa fa-lock"></i>

@@ -7,7 +7,10 @@ import com.hjs.study.spring.ext.model.LogonHistory;
 
 public interface ILogonHistoryDao {
 
-	
+	/**
+	 * 新增登陆历史
+	 */
+	public int insertHistory(LogonHistory param);
 	/**
 	 * 
 	 */

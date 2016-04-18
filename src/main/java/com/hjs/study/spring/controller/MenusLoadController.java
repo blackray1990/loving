@@ -1,10 +1,13 @@
 package com.hjs.study.spring.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -45,8 +48,9 @@ public class MenusLoadController extends BaseController{
 	 * @return
 	 */
 	@RequestMapping("manager")
-	public String managerMenu(HttpServletRequest request,HttpServletResponse response){
-		
+	public String managerMenu(Model model){
+//		List<Menu> menus = menuService.getAllMenuList();
+//		model.addAttribute("menus",menus);
 		return "menu/menuList";
 	}
 	

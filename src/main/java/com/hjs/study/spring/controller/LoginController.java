@@ -1,14 +1,11 @@
 package com.hjs.study.spring.controller;
 
 import java.util.List;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -51,37 +48,37 @@ public class LoginController extends BaseController{
 	 * 登陆验证
 	 */
 	@RequestMapping(value="logonsys")
-	public String logonSys(HttpServletRequest request,HttpServletResponse response,ModelMap map,@ModelAttribute User user,Model model) throws Exception{
+	public String logonSys(HttpServletRequest request,HttpServletResponse response,@ModelAttribute User user,Model model) throws Exception{
 		
 		String sessionId = request.getAttribute(Constants.JSESSIONID).toString();
-		if(Constants.RESULT_MSG.equals(request.getAttribute(Constants.CHECK_RESULT))){
-			request.getSession().setAttribute("contextPaths", request.getContextPath());
-			map.addAttribute("username",request.getSession().getAttribute(sessionId));
-			return "login/logon";
-		}
+		
 		if(user==null){
-			map.addAttribute("errordtl", "登录超时，请重新登录!");
-			return "default";
+			model.addAttribute("errordtl", "登录超时，请重新登录!");
+			model.addAttribute("LOGIN_STATUS", STATUS_FAILED);
+			return "redirect:/login";
 		}
 		
+		model.addAttribute("loginName",user.getUsername());
 		
 		user.setPassword(MD5Util.MD5Encode(user.getPassword(), null));
 		User user1 = loginService.getUser(user);
 		if(user1==null){
-			map.put("msg", FAIlURE);
-			return "default";
+			model.addAttribute("errordtl", "用户名或密码错误");
+			model.addAttribute("LOGIN_STATUS", STATUS_FAILED);
+			return "redirect:/login";
 		}
 
+		model.addAttribute("LOGIN_STATUS", STATUS_SUCCESS);
+		
 		request.getSession().setAttribute("USER", user1);
-		request.getSession().setAttribute("contextPaths", request.getContextPath());
+		request.getSession().setAttribute("CONTEXT", request.getContextPath());
 		request.getSession().setAttribute(sessionId, user1.getUsername());
 		return "redirect:/index";
 	}
 
 	@RequestMapping(value="index")
 	public String index(Model model){
-		List<Menu> menus = menuService.getAllMenuList();
-		model.addAttribute("menus",menus);
+		
 		return "login/index";
 	}
 	
@@ -92,7 +89,7 @@ public class LoginController extends BaseController{
 	public String logout(HttpServletRequest request){
 		String sessionId = request.getAttribute(Constants.JSESSIONID).toString();
 		request.getSession().removeAttribute(sessionId);
-		return "default";
+		return "redirect:/index";
 	}
 	
 	/**
@@ -100,15 +97,14 @@ public class LoginController extends BaseController{
 	 */
 	@RequestMapping(value="gethistory")
 	public String getLogonHistory(LogonHistory param,Page<LogonHistory> page,Model model){
-		page.setStartIndex(page.getCurrentPage()*page.getPageSize()-1);
+		page.setStartIndex((page.getCurrentPage()-1)*page.getPageSize());
 		int entityCount = logonHistoryDao.selectLogonHistoryCount(param);
 		List<LogonHistory> entityList = logonHistoryDao.selectLogonHistory(page);
 		page.setTotalCount(entityCount);
 		page.setItems(entityList);
 		
 		model.addAttribute("page",page);
-		List<Menu> menus = menuService.getAllMenuList();
-		model.addAttribute("menus",menus);
+
 		return "login/history";
 	}
 	

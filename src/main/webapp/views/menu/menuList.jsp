@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../include.jsp" %>
 
 <style>
 	td {
@@ -22,57 +21,96 @@
 	
 </style>
 <body>
-<div class="easyui-layout" data-options="fit:true">
-	<div data-options="region:'west',split:true" style="width:250px;">
-		<div id="menupanel">
-			<ul id="emenus" class="easyui-tree" data-options="url:'menu/loadmenu.do',animate:true,lines:true,dnd:true,checkbox:true"></ul>
+<!-- 	<div class="easyui-layout" data-options="fit:true">
+		<div data-options="region:'west',split:true" style="width: 250px;">
+			<div id="menupanel">
+				<ul id="emenus" class="easyui-tree"
+					data-options="url:'menu/loadmenu.do',animate:true,lines:true,dnd:true,checkbox:true"></ul>
+			</div>
 		</div>
-	</div>   
-    <div data-options="region:'center'">
-    	<div align="center" style="margin-top: 100px">
-    	<fieldset id="dataset" style="width:70%;display:none;">
-    		<legend>详情</legend>
-    		<br/><br/>
-    		<form id="menuform" onsubmit="return false;">
-    			<table style="text-align: center;">
-    				<tr>
-    					<td>名称</td><td class="input_td"><input type="text" id="mtitle" name="text" class="nowrite"></td>
-    					<td>是否目录</td><td class="input_td"><select id="mfolder" name="isFolder"  class="nowrite"><option value="0">否</option><option value="1">是</option></select></td>
-    					
-    				</tr>
-    				<tr>
-    					<td>上级目录</td><td class="input_td"><input type="hidden" name="parent" id="mparent" class="nowrite"><input type="text" id="mparenttext" disabled="disabled"></td>
-    					<td>URL</td>
-    					<td class="input_td">
-    						<input type="text" name="url" id="murl" class="nowrite">&nbsp;&nbsp;<a id="aritcle_tpl" href="javascript:void(0)">文章</a>
-    					</td>
-    				</tr>
-    				<tr>
-    					<td>模板</td><td class="input_td"><input type="text" name="template" id="mtemplate" class="nowrite"><br/></td>
-    					<td style="display:none;">id</td><td style="display:none;"><input type="text" name="id" id="mid" value="0"><input type="text" id="operation" name="operation"><br/></td>
-    					<td>打开方式</td>
-    					<td>
-    						<select name="openType">
-    							<option value="1">tab打开</option>
-    							<option value="2">新标签页打开</option>
-    						</select>
-    					</td>
-    				</tr>
-    				<tr height="100px">
-    					<td colspan="4">
-    						<input class="com-btn nowrite" type="submit" id="subIndex" value="保存">
-    						<input class="com-btn" type="reset" id="reset">
-    					</td>
-    				</tr>
-    			</table>
-    		</form>
-    		</fieldset>
+		<div></div>
+	</div> -->
+	<!-- 顶部 -->  
+	<%@ include file="/views/header.jsp" %>
+	
+	<!-- 左 -->
+	<div class="col-lg-2 col-sm-2" align="center">
+        <%@ include file="/views/left.jsp" %>
     </div>
-</div>
-</div>
-<script>
-	seajs.use("<%=contextPath%>/scripts/menu/menuList",function(page){
-		page.init();
-	});
-</script>
+    <!-- 中 -->
+    <div class="col-lg-8 col-sm-8" style="padding-left:50px;">
+    
+    	<div class="panel panel-default">
+		   <div class="panel-body">
+		      <fieldset id="dataset" style="width: 100%;">
+				<legend>详情</legend>
+				<br />
+				<br />
+				<form id="menuform" onsubmit="return false;" class="form-horizontal">
+					<!-- 左区域 -->
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="text" class="col-sm-5 control-label">名称</label>
+							<div class="col-lg-7">
+								<input type="text" class="form-control" id="mtitle" name="text" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="text" class="col-sm-5 control-label">上级目录</label>
+							<div class="col-lg-7">
+								<input type="text" class="form-control" id="mparenttext" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="text" class="col-sm-5 control-label">模板</label>
+							<div class="col-lg-7">
+								<input type="text" class="form-control" id="mparenttext" />
+							</div>
+						</div>
+					</div>
+					<!-- 右区域 -->
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="text" class="col-sm-5 control-label">是否目录</label>
+							<div class="col-lg-7">
+								<select class="form-control ">
+							         <option value="">请选择</option>
+							         <option value="">是</option>
+							         <option value="">否</option>
+							      </select>
+							</div>
+					   </div>
+						<div class="form-group">
+							<label for="text" class="col-sm-5 control-label">URL</label>
+							<div class="col-lg-5">
+								<div><input type="text" class="form-control " id="murl" name="url" /></div>
+							</div>
+							<div class="col-sm-2" style="padding-top:7px">
+								<a  href="#">文章</a>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="text" class="col-sm-5 control-label">打开方式</label>
+							<div class="col-lg-7">
+								<select class="form-control ">
+							         <option value="">请选择</option>
+							         <option value="">当前页面</option>
+							         <option value="">新页面</option>
+							      </select>
+							</div>
+					   </div>
+					</div>
+					
+					<p align="center">
+						<button type="button" style="margin-top:100px;width:20%" class="btn btn-primary btn-lg">保存</button>
+					</p>
+				</form>
+			</fieldset>
+		   </div>
+		</div>
+		
+	</div>
+     <!-- 右 -->
+     <div class="col-lg-2 col-sm-2" align="center"></div>
 </body>

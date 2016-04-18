@@ -16,7 +16,7 @@
     <mvc:annotation-driven /> -->
     
     
-    <!-- 拦截器链-->
+    <!-- 控制器 拦截器链-->
     <mvc:interceptors>  
     	<mvc:interceptor>
  			<mvc:mapping path="/*"/>

@@ -26,7 +26,10 @@
     <!-- 中 -->
     <div class="col-lg-8 col-sm-8" style="padding-left:50px;">
     	<div  class="r_title">
-    		<span>Homepage</span>
+    		<p>Homepage</p>
+    		<div>
+    			dsf
+    		</div>
     	</div>
     </div>
     <!-- 右 -->

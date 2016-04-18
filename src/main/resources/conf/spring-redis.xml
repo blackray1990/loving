@@ -15,7 +15,7 @@ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 		<property name="ignoreUnresolvablePlaceholders" value="true" />
 		<property name="locations">
 			<list>
-				<value>classpath:conf/redis-manager-config.properties</value>
+				<value>classpath:conf/redis/redis-manager-config.properties</value>
 			</list>
 		</property>
 	</bean>
@@ -42,7 +42,7 @@ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 	<bean id="redisTemplate" class="org.springframework.data.redis.core.StringRedisTemplate">
 		<property name="connectionFactory" ref="jedisConnectionFactory" />
 	</bean>
-	<!--配置一个基础类（之后的业务类继承于该类）、将redisTemplate注入 -->  
+	<!--配置一个基础类（之后的业务类继承于该类）、将redisTemplate注入 -->
 	<bean id="redisBase" abstract="true">  
       <property name="template" ref="redisTemplate"></property>  
     </bean>  

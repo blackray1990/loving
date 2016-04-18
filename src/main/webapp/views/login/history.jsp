@@ -9,44 +9,6 @@
 	</head>
 	
 	<!-- <p>通过spring自动切换数据源至ext扩展数据源：</p> -->
-	<style>
-		.r_title {
-		    font-size: 22px;
-		    color: #33455a;
-		    font-family: 'Microsoft Yahei', '黑体';
-		    overflow: hidden;
-		    margin-bottom: 16px;
-		}
-		.search_form {
-		    vertical-align: top;
-		    border: 1px solid #ccc;
-		    border-radius: 3px;
-		    display: inline-block;
-		    overflow: hidden;
-		    height: 33px;
-		}
-		.search_wrap {
-		    float: right;
-		    height: 38px;
-		}
-		.search_input {
-		    color: #4b4b4b;
-		    font-size: 12px;
-		    padding: 9px;
-		    width: 148px;
-		    vertical-align: top;
-		    border: none;
-		}
-		.search_btn {
-		    display: inline-block;
-		    width: 32px;
-		    height: 36px;
-		    background: url(imgs/search_input_bg.png) no-repeat center center;
-		    cursor: pointer;
-		    border: none;
-		    vertical-align: top;
-		}
-	</style>
 	
 	<body> 
 	<!-- 顶部 -->  

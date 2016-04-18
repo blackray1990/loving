@@ -1,29 +1,36 @@
-#common css file
-
-#∆’Õ®÷–µ»∞¥≈•
-.com-btn {
-	color: black;
-	background: linear-gradient(to bottom, #FFF 0px, #EEE 100%) repeat-x scroll 0% 0% transparent;
-	border: 1px solid #BBB;
-	border-radius: 5px;	<!--±ﬂøÚ‘≤Ω«-->
+.r_title {
+		    font-size: 22px;
+		    color: #33455a;
+		    font-family: 'Microsoft Yahei', 'Èªë‰Ωì';
+		    overflow: hidden;
+		    margin-bottom: 16px;
+		}
+.search_form {
+    vertical-align: top;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    display: inline-block;
+    overflow: hidden;
+    height: 33px;
 }
-
-.shorttext {
-	width: 70px;
+.search_wrap {
+    float: right;
+    height: 38px;
 }
-
-.kaptcha {
-	height: 22px;
-	width: 70px;
-	position: relative;
-	top: 6px;
+.search_input {
+    color: #4b4b4b;
+    font-size: 12px;
+    padding: 9px;
+    width: 148px;
+    vertical-align: top;
+    border: none;
 }
-
-.errorinfo {
-	color: red;
-}
-
-.cuslarge {
-	height: 31px;
-	width: 50px;
+.search_btn {
+    display: inline-block;
+    width: 32px;
+    height: 36px;
+    background: url(imgs/search_input_bg.png) no-repeat center center;
+    cursor: pointer;
+    border: none;
+    vertical-align: top;
 }

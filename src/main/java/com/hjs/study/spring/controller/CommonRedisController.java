@@ -19,8 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hjs.study.spring.test.model.PersonDO;
-
-import redis.clients.jedis.JedisPoolConfig;
 /**
  * spring-data-redis用法
  * @author Administrator

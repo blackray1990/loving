@@ -2,9 +2,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.hjs.study.spring</groupId>
-	<artifactId>myspring</artifactId>
+	<artifactId>loving</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>myspring</name>
+	<name>loving</name>
 	<description>for learning</description>
 
 	<properties>
@@ -213,7 +213,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>myspring</finalName>
+		<finalName>loving</finalName>
 		<plugins>
 			<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -245,7 +245,7 @@
 					<url>http://127.0.0.1:8080/manager</url>
 					<server>tomcat6</server>
 					<port>8080</port>
-					<path>/myspring</path>
+					<path>/loving</path>
 					<charset>utf-8</charset>
 					<contextReloadable>true</contextReloadable>
 				</configuration>

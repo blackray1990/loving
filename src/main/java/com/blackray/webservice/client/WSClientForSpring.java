@@ -8,16 +8,16 @@ import com.blackray.webservice.service.HelloWorldService;
 public class WSClientForSpring {
     public static void main(String[] args) {
               JaxWsProxyFactoryBean svr = new JaxWsProxyFactoryBean();
-              svr.setServiceClass(HelloWorldService.class);			//ÉèÖÃ·þÎñÀàclass
-              svr.setAddress("http://localhost:8080/myspring/remote/HelloWorld");	//·ÃÎÊ¼¯³ÉÔÚspringÖÐµÄwsdlµØÖ·
+              svr.setServiceClass(HelloWorldService.class);			//ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½class
+              svr.setAddress("http://localhost:8080/loving/remote/HelloWorld");	//ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½springï¿½Ðµï¿½wsdlï¿½ï¿½Ö·
               
-              HelloWorldService hw = (HelloWorldService) svr.create();	//»ñµÃ·þÎñÀàÊµÀý
+              HelloWorldService hw = (HelloWorldService) svr.create();	//ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
               
-              System.out.println(hw.sayHi("Hejinsheng"));	//µ÷ÓÃ·þÎñ
+              System.out.println(hw.sayHi("Hejinsheng"));	//ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½
               
               Person person = new Person();
               person.setName("Tony");
               person.setDescription("test");
-              System.out.println(hw.sayHiToUser(person));	//µ÷ÓÃ·þÎñ
+              System.out.println(hw.sayHiToUser(person));	//ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½
     }
 }
